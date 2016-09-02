@@ -4,6 +4,7 @@ import android.content.Context;
 
 import android.os.AsyncTask;
 import android.support.v4.util.Pair;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.tanwang.myapplication.backend.myApi.MyApi;
@@ -40,8 +41,12 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
         context = params[0].first;
         String name = params[0].second;
 
+
+
         try {
-            return myApiService.sayHi(name).execute().getData();
+            String result=myApiService.tellJoke().execute().getData();
+            Log.e("111",result);
+            return result;
         } catch (IOException e) {
             return e.getMessage();
         }
