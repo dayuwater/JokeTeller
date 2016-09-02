@@ -2,9 +2,11 @@ package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.util.Pair;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,7 +48,12 @@ public class MainActivity extends ActionBarActivity {
 
     public void tellJoke(View view) {
 
-        new EndpointsAsyncTask().execute(this);
+        EndpointsAsyncTask task=new EndpointsAsyncTask();
+        task.execute(this);
+        if(task.getStatus()== AsyncTask.Status.FINISHED) {
+
+            Log.e("111", task.result);
+        }
 
 
     }

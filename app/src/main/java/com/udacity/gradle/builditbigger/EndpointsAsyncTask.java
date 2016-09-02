@@ -24,6 +24,7 @@ import java.io.IOException;
 public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
+    public String result;
 
 
 
@@ -61,5 +62,6 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
         Intent intent=new Intent(context,JokeActivity.class);
         intent.putExtra(JokeActivity.JOKE_EXTRA, result);
         context.startActivity(intent);
+        this.result=result;
     }
 }
