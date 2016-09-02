@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.JokeSmith;
+
 import com.tanwang9408.jokemodule.JokeActivity;
 
 
@@ -46,11 +46,9 @@ public class MainActivity extends ActionBarActivity {
 
     public void tellJoke(View view) {
 
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfio"));
+        new EndpointsAsyncTask().execute(this);
 
-        Intent intent=new Intent(this,JokeActivity.class);
-        intent.putExtra(JokeActivity.JOKE_EXTRA,JokeSmith.getJoke());
-        startActivity(intent);
+
     }
 
 
