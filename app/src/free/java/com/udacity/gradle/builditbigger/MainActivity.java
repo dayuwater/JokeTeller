@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.tanwang9408.jokemodule.JokeActivity;
@@ -26,6 +27,36 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mInterstitial=new InterstitialAd(this);
+        mInterstitial.setAdUnitId(this.getString(R.string.interstitial_ad_unit_id));
+        mInterstitial.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+                loadInterstitial();
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                super.onAdLeftApplication();
+
+            }
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+            }
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+            }
+        });
         loadInterstitial();
 
 
@@ -33,8 +64,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void loadInterstitial(){
-        mInterstitial=new InterstitialAd(this);
-        mInterstitial.setAdUnitId(this.getString(R.string.interstitial_ad_unit_id));
+
 
 
 
@@ -84,6 +114,7 @@ public class MainActivity extends ActionBarActivity {
         EndpointsAsyncTask task=new EndpointsAsyncTask();
         task.execute(this);
         if(task.getStatus()== AsyncTask.Status.FINISHED) {
+
 
 
 
