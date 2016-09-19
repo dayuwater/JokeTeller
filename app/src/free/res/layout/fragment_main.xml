@@ -21,8 +21,18 @@
         android:layout_below="@+id/instructions_text_view"
         android:onClick="tellJoke"
         android:text="@string/button_text"
+        android:id="@+id/button_joke"
 
         />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_joke"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"

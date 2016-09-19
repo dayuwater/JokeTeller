@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 
 import com.google.android.gms.ads.AdListener;
@@ -22,6 +23,7 @@ import com.tanwang9408.jokemodule.JokeActivity;
 public class MainActivity extends ActionBarActivity {
 
     private InterstitialAd mInterstitial;
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +60,16 @@ public class MainActivity extends ActionBarActivity {
             }
         });
         loadInterstitial();
+        mProgressBar=(ProgressBar)findViewById(R.id.progressBar1);
 
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mProgressBar.setVisibility(View.GONE);
     }
 
     private void loadInterstitial(){
@@ -101,24 +110,23 @@ public class MainActivity extends ActionBarActivity {
         if(mInterstitial.isLoaded()){
             mInterstitial.show();
 
+
         }
 
 
 
     }
 
+
+
     public void tellJoke(View view) {
+        mProgressBar.setVisibility(View.VISIBLE);
 
 
         showInterstitial();
         EndpointsAsyncTask task=new EndpointsAsyncTask();
-        task.execute(this);
-        if(task.getStatus()== AsyncTask.Status.FINISHED) {
-
-
-
-
-        }
+         task.execute(this);
+        Log.e("111",Integer.toString(mProgressBar.getVisibility()));
 
 
     }

@@ -53,7 +53,7 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
 
         try {
             String result=myApiService.tellJoke().execute().getData();
-            Log.e("111",result);
+
             return result;
         } catch (IOException e) {
             return e.getMessage();
@@ -65,6 +65,7 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
         Intent intent=new Intent(context,JokeActivity.class);
         intent.putExtra(JokeActivity.JOKE_EXTRA, result);
         context.startActivity(intent);
+
         this.result=result;
     }
 }
