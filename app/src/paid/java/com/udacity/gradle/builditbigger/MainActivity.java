@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 
 import com.tanwang9408.jokemodule.JokeActivity;
@@ -17,12 +18,22 @@ import com.tanwang9408.jokemodule.JokeActivity;
 
 public class MainActivity extends ActionBarActivity {
 
+    private ProgressBar mProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mProgressBar=(ProgressBar)findViewById(R.id.progressBar1);
+
+
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mProgressBar.setVisibility(View.GONE);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -47,6 +58,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view) {
+
+        mProgressBar.setVisibility(View.VISIBLE);
+
+
+
+
 
         EndpointsAsyncTask task=new EndpointsAsyncTask();
         task.execute(this);

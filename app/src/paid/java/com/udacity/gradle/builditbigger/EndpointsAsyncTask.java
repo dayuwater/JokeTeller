@@ -4,6 +4,7 @@ import android.content.Context;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.SystemClock;
 import android.support.v4.util.Pair;
 import android.util.Log;
 import android.widget.Toast;
@@ -30,6 +31,8 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
 
     @Override
     protected String doInBackground(Context... params) {
+        // I do this intentionally to give the interstitial ad and loading indicator enough time to display
+        SystemClock.sleep(5000);
         if(myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
