@@ -67,10 +67,7 @@ public class MainActivity extends ActionBarActivity {
 
         EndpointsAsyncTask task=new EndpointsAsyncTask();
         task.execute(this);
-        if(task.getStatus()== AsyncTask.Status.FINISHED) {
 
-            Log.e("111", task.result);
-        }
 
 
     }
